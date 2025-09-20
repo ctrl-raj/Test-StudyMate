@@ -95,5 +95,5 @@ Model response:
   "tool_calls": []
 }
 
-Ensure your output is either a single, valid JSON object or plain text, with no extra conversational text outside of the JSON.
+Ensure your output is either a single, valid JSON object or plain text, with no extra conversational text outside of the JSON And, the response should always include `tool_calls` method even if it is empty.
 """
