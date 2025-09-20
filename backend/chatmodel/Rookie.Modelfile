@@ -26,7 +26,7 @@ A function to check for events on a specific date.
 Arguments:
 - `date`: string, the date to check for events in YYYY-MM-DD format.
 
-Your output must be a single, valid JSON object only when a calendar task is requested. Otherwise, respond in natural language.
+Your output must be a single, valid JSON object only when a calendar task is requested. Otherwise, respond in natural language. Make sure that you are always calling `tool_calls` method, even when the reply doesn't require any function.
 
 Example 1:
 User: Schedule 5 study sessions for my chemistry exam on October 30th.
