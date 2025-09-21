@@ -69,7 +69,7 @@ def getEvent():
 
 
 # POST EVENT FUNCTION 
-def postEvent(summary: str, description: str, date: int, recurrence_count: int, time_hr: int, colorInt: int):
+def postEvent(title: str, description: str, date: int, recurrence_count: int, time_hr: int):
     creds = None
 
     if os.path.exists("token.json"):
@@ -90,10 +90,10 @@ def postEvent(summary: str, description: str, date: int, recurrence_count: int, 
         service = build("calendar", "v3", credentials=creds)
 
         event = {
-            "summary": summary,
+            "summary": title,
             "location": "Home OR Library",
             "description": description,
-            "colorId": str(colorInt),
+            "colorId": 1,
             "start": {"dateTime": f"{date}T{time_hr}:00:00", "timeZone": "Asia/Kolkata"},
             "end": {"dateTime": f"{date}T{time_hr + 2}:00:00", "timeZone": "Asia/Kolkata"},
             "recurrence":[
