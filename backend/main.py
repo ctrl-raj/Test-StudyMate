@@ -3,15 +3,29 @@ import ollama
 import subprocess
 import time
 import json 
+import tabulate
 
 # FUNCTION EXECUTER
 def execute(name: dict, arguments: dict):
     try:
         if name == "getEvent":
-            eventManager.getEvent()
+            print("Getting Upcomming Events...")
+
+            events = eventManager.getEvent()
+            
+            table_data = [[date, event] for date, event in events.items()]
+            headers = ["Date", "Event"]
+            print(tabulate.tabulate(table_data, headers=headers, tablefmt="github"))
 
         elif name == "checkEvent":
-            eventManager.checkEvent(arguments["date"])
+            date = arguments["date"]
+            print(f"Checking Events on {date}...")
+
+            events = eventManager.checkEvent(arguments["date"])
+
+            table_data = [[date, event] for date, event in events.items()]
+            headers = ["Date", "Event"]
+            print(tabulate.tabulate(table_data, headers=headers, tablefmt="github"))
     
         elif name == "postEvent":
             title = arguments["event_title"]
@@ -19,6 +33,8 @@ def execute(name: dict, arguments: dict):
             date = arguments["date"]
             recurrence = arguments["recurrence"]
             time = arguments["time"]
+
+            print(f"Posting {title} on {date}...")
 
             eventManager.postEvent(title=title, description=description, date=date, recurrence_count=recurrence, time_hr=time)
     

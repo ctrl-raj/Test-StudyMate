@@ -49,19 +49,13 @@ def getEvent():
         if not events:
             return "No events found"
         
-        eventDict = {
-            "events": [] # contains list of events
-        }
+        eventDict = {}
+
         for event in events:
-            start = event["start"].get("datetime", event["start"].get("date"))
-            
-            # appending event in temporary event dictionary
-            for i in range(1, maxResults + 1, 1):
-                eventDict["events"].append({
-                    "start": start,
-                    "summary": event["summary"]
-                })
-        
+            start = event["start"].get("dateTime", event["start"].get("date"))
+            item = {start: event["summary"]}
+            eventDict.update(item)
+
         return eventDict
         
     except HttpError as error:
