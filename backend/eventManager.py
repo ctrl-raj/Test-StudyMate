@@ -63,7 +63,7 @@ def getEvent():
 
 
 # POST EVENT FUNCTION 
-def postEvent(title: str, description: str, date: int, recurrence_count: int, time_hr: int):
+def postEvent(title: str, description: str, date: int, time_hr: int, recurrence_count: int):
     creds = None
 
     if os.path.exists("token.json"):

@@ -4,6 +4,7 @@ import subprocess
 import time
 import json 
 import tabulate
+import webbrowser
 
 # FUNCTION EXECUTER
 def execute(name: dict, arguments: dict):
@@ -28,15 +29,20 @@ def execute(name: dict, arguments: dict):
             print(tabulate.tabulate(table_data, headers=headers, tablefmt="github"))
     
         elif name == "postEvent":
+
             title = arguments["event_title"]
             description = arguments["event_summary"]
             date = arguments["date"]
-            recurrence = arguments["recurrence"]
-            time = arguments["time"]
+            # default value for time
+            time = arguments.get("time", 9)
+            # default value of recurrence
+            recurrence = arguments.get("recurrence", 1)
 
             print(f"Posting {title} on {date}...")
 
-            eventManager.postEvent(title=title, description=description, date=date, recurrence_count=recurrence, time_hr=time)
+            url = eventManager.postEvent(title=title, description=description, date=date, recurrence_count=recurrence, time_hr=time)
+            time.sleep(2)
+            webbrowser.open(url=url)
     
         else:
             print("no functions called")
@@ -70,6 +76,7 @@ while True:
         response_dict = json.loads(response_string)
         
         print(f"Reponse: {response_dict["message"]}")
+        print(response_dict)
 
         tool_calls = response_dict["tool_calls"]
         function = tool_calls[0]

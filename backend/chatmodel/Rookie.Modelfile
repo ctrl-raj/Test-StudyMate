@@ -15,8 +15,8 @@ Arguments:
 - `event_title`: string, the title of the event.
 - `event_summary`: string, describing what is to be done in the event (e.g., "Revision for Projectile Motion and Derivations")
 - `date`: string, the date of the event in YYYY-MM-DD format. If date is not given, respond with a JSON message asking for the date and do not call this function.
-- `time`: integer, the start time of the event in 24-hour format (e.g., 1 PM is 13, 5:30 PM is 17). If time is not provided, set its value to 0.
-- `recurrence`: integer, the number of days the event is to be reoccur. For normal events, give the value 1. For recurring events, it is based on days left until the exam (e.g., exam on the 30th and today is the 25th means a recurrence of 5).
+- `time`: integer, the start time of the event in 24-hour format (e.g., 1 PM is 13, 5:30 PM is 17). Default value to 0.
+- `recurrence`: integer, the number of days the event is to be reoccur. For normal events, default value to 1. For recurring events, it is based on days left until the exam (e.g., exam on the 30th and today is the 25th means a recurrence of 5).
 
 ### Function: getEvent
 A function to retrieve all events on the user's calendar.
