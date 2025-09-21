@@ -39,8 +39,8 @@ Model response:
         "name": "postEvent",
         "arguments": {
           "event_title": "Chemistry Study Session",
-          "event_summary": "Revision and Question Practice"
-          "exam_date": "2025-10-30",
+          "event_summary": "Revision and Question Practice",
+          "exam_date": "2025-10-30"
         }
       }
     }
@@ -72,7 +72,7 @@ Model response:
       "function": {
         "name": "checkEvent",
         "arguments": {
-          "date": "2025-09-20"
+          "date": "2025-09-21"
         }
       }
     }
