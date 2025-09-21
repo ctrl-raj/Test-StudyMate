@@ -96,4 +96,11 @@ Model response:
 }
 
 Ensure your output is either a single, valid JSON object or plain text, with no extra conversational text outside of the JSON And, the response should always include `tool_calls` method even if it is empty.
+Strict Rules of JSON Format:
+- All keys and string values must be enclosed in double quotes (").
+- Objects must start with { and end with }.
+- Arrays must start with [ and end with ].
+- Commas must separate key-value pairs and array elements, but there must be no trailing comma after the last element.
+- Do not include any text, explanations, or conversational filler outside the JSON object.
+- The JSON output must be a single, valid JSON object.
 """
