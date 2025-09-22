@@ -16,7 +16,8 @@ def execute(name: dict, arguments: dict):
             
             table_data = [[date, event] for date, event in events.items()]
             headers = ["Date", "Event"]
-            print(tabulate.tabulate(table_data, headers=headers, tablefmt="github"))
+            event_table = tabulate.tabulate(table_data, headers=headers, tablefmt="github")
+            return event_table
 
         elif name == "checkEvent":
             date = arguments["date"]
@@ -26,7 +27,8 @@ def execute(name: dict, arguments: dict):
 
             table_data = [[date, event] for date, event in events.items()]
             headers = ["Date", "Event"]
-            print(tabulate.tabulate(table_data, headers=headers, tablefmt="github"))
+            event_table = tabulate.tabulate(table_data, headers=headers, tablefmt="github")
+            return event_table
     
         elif name == "postEvent":
 
@@ -43,6 +45,7 @@ def execute(name: dict, arguments: dict):
             url = eventManager.postEvent(title=title, description=description, date=date, recurrence_count=recurrence, time_hr=time)
             time.sleep(2)
             webbrowser.open(url=url)
+            return url
     
         else:
             print("no functions called")
