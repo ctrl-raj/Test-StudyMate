@@ -54,10 +54,6 @@ def execute(name: dict, arguments: dict):
         print(f"Error: {e}")
 
 
-# Start the Ollama server
-ollama_process = subprocess.Popen(["ollama", "serve"])
-time.sleep(1)
-
 # Initialize the Ollama client
 client = ollama.Client()
 
@@ -65,31 +61,26 @@ client = ollama.Client()
 model = "rookie"  # Replace with your model name
 print(f"{model} loaded...")
 
-while True:
-    terminate = False
-    prompt = input(">>> ") # is to be directed from frontend
+def chatScheduler(prompt: str):
+    # generate response
+    response = client.generate(model=model, prompt=prompt)
+    print(f"--{model} Responded--")
+    response_string = response.response
+    response_dict = json.loads(response_string)
+    
+    # terminal side checks
+    print(f"Reponse: {response_dict["message"]}")
+    print(response_dict)
 
-    if prompt == "//bye":
-        terminate = True
-        break
-    else:
-        response = client.generate(model=model, prompt=prompt)
-        print(f"--{model} Responded--")
-        response_string = response.response
-        response_dict = json.loads(response_string)
-        
-        print(f"Reponse: {response_dict["message"]}")
-        print(response_dict)
-
-        tool_calls = response_dict["tool_calls"]
+    # call tools
+    tool_calls = response_dict["tool_calls"]
+    try:
         function = tool_calls[0]
         function_name = function["function"]["name"]
         function_arguments = function["function"]["arguments"]
+    except Exception as e:
+        print("No functions called")
 
-        execute(function_name, function_arguments)
-
-# stop ollama server
-if terminate:
-    print("Stoping Ollama Server...")
-    ollama_process.terminate()
-    time.sleep(1)
+    # generate output for frontend
+    output = execute(function_name, function_arguments)
+    return f"Reponse: {response_dict["message"]}" , output
