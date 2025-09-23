@@ -66,6 +66,8 @@ def chatScheduler(prompt: str):
     response = client.generate(model=model, prompt=prompt)
     print(f"--{model} Responded--")
     response_string = response.response
+
+    # response
     response_dict = json.loads(response_string)
     
     # terminal side checks
@@ -74,13 +76,15 @@ def chatScheduler(prompt: str):
 
     # call tools
     tool_calls = response_dict["tool_calls"]
-    try:
+
+    if len(tool_calls) == 0:
+        print("No Functions Called By Rookie...")
+        return f"Reponse: {response_dict["message"]}" , None
+    else:
         function = tool_calls[0]
         function_name = function["function"]["name"]
         function_arguments = function["function"]["arguments"]
-    except Exception as e:
-        print("No functions called")
 
-    # generate output for frontend
-    output = execute(function_name, function_arguments)
-    return f"Reponse: {response_dict["message"]}" , output
+        # generate output for frontend
+        output = execute(function_name, function_arguments)
+        return f"Reponse: {response_dict["message"]}" , output
