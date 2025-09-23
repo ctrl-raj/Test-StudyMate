@@ -2,7 +2,7 @@ from fastapi import FastAPI
 from pydantic import BaseModel
 from fastapi.middleware.cors import CORSMiddleware
 
-from main import chatScheduler
+from backend.chatscheduler import chatScheduler
 
 class Product(BaseModel):
     prompt: str
