@@ -1,4 +1,4 @@
-import backend.scripts.eventManager as eventManager
+import scripts.eventManager as eventManager
 import ollama
 import subprocess
 import time
@@ -54,14 +54,12 @@ def execute(name: dict, arguments: dict):
         print(f"Error: {e}")
 
 
-# Initialize the Ollama client
-client = ollama.Client()
-
-
-model = "rookie"
-print(f"{model} loaded...")
-
 def chatScheduler(prompt: str):
+
+    # Initialize the Ollama client
+    client = ollama.Client()
+    model = "rookie"
+
     # generate response
     response = client.generate(model=model, prompt=prompt)
     print(f"--{model} Responded--")
