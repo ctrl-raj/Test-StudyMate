@@ -3,8 +3,8 @@ from pydantic import BaseModel
 from fastapi.middleware.cors import CORSMiddleware
 
 #scripts
-from backend.scripts.chatscheduler import chatScheduler
-from backend.scripts.flashcardsGen import GenFlashcards
+from scripts.chatscheduler import chatScheduler
+from scripts.flashcardsGen import GenFlashcards
 
 class Product(BaseModel):
     prompt: str
