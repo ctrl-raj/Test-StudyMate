@@ -2,7 +2,9 @@ from fastapi import FastAPI
 from pydantic import BaseModel
 from fastapi.middleware.cors import CORSMiddleware
 
-from backend.chatscheduler import chatScheduler
+#scripts
+from backend.scripts.chatscheduler import chatScheduler
+from backend.scripts.flashcardsGen import GenFlashcards
 
 class Product(BaseModel):
     prompt: str
@@ -19,9 +21,16 @@ app.add_middleware(
 )
 
 @app.get("/chat_response/{prompt}")
-async def packResponse(prompt: str):
+async def chatResponse(prompt: str):
     response, other = chatScheduler(prompt)
     return {
         "response": response,
         "other": other
     }
+
+@app.get("/flashcards/{subject}")
+def genFlashcards(subject: str):
+    response = GenFlashcards(subject=subject)
+    flashcards = response["flashcards"]
+    
+    return flashcards
