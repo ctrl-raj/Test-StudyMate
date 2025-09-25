@@ -1,2 +1,10 @@
+# Python bytecode
+*.pyc
+*.pyo
 __pycache__/
-token.json
+
+# Virtual environment
+StudyMateVenv/
+
+# Sensitive files
+credentials.json
