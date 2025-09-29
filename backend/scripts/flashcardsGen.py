@@ -1,3 +1,6 @@
+# -- SCRIPT -- #
+
+# Dependencies
 import ollama
 import json
 

@@ -1,10 +1,13 @@
-import scripts.eventManager as eventManager
+# -- SCRIPT -- #
+
+# Dependencies
 import ollama
-import subprocess
-import time
 import json 
 import tabulate
 import webbrowser
+
+# Script
+import scripts.eventManager as eventManager
 
 # FUNCTION EXECUTER
 def execute(name: dict, arguments: dict):
