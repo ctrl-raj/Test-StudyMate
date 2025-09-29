@@ -1,8 +1,11 @@
+# -- API Server -- #
+
+# Dependencies
 from fastapi import FastAPI
 from pydantic import BaseModel
 from fastapi.middleware.cors import CORSMiddleware
 
-#scripts
+# Scripts
 from scripts.chatscheduler import chatScheduler
 from scripts.flashcardsGen import GenFlashcards
 
@@ -22,15 +25,17 @@ app.add_middleware(
 
 @app.get("/chat_response/{prompt}")
 async def chatResponse(prompt: str):
-    response, other = chatScheduler(prompt)
-    return {
-        "response": response,
-        "other": other
-    }
+    if prompt:
+        response, other = chatScheduler(prompt)
+        return {
+            "response": response,
+            "other": other
+        }
 
 @app.get("/flashcards/{subject}")
 def genFlashcards(subject: str):
-    response = GenFlashcards(subject=subject)
-    flashcards = response["flashcards"]
-    
-    return flashcards
+    if subject:
+        response = GenFlashcards(subject=subject)
+        flashcards = response["flashcards"]
+        
+        return flashcards
