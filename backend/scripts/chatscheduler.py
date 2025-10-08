@@ -5,6 +5,7 @@ import ollama
 import json 
 import tabulate
 import webbrowser
+import time as t
 
 # Script
 import scripts.eventManager as eventManager
@@ -35,8 +36,8 @@ def execute(name: dict, arguments: dict):
     
         elif name == "postEvent":
 
-            title = arguments["event_title"]
-            description = arguments["event_summary"]
+            title = arguments.get("event_title", "untitled")
+            description = arguments.get("event_summary", "no summary")
             date = arguments["date"]
             # default value for time
             time = arguments.get("time", 9)
@@ -46,7 +47,7 @@ def execute(name: dict, arguments: dict):
             print(f"Posting {title} on {date}...")
 
             url = eventManager.postEvent(title=title, description=description, date=date, recurrence_count=recurrence, time_hr=time)
-            time.sleep(2)
+            t.sleep(1.5)
             webbrowser.open(url=url)
             return url
     
@@ -84,4 +85,6 @@ def chatScheduler(prompt: str):
 
         # generate output for frontend
         output = execute(function_name, function_arguments)
+        if output:
+            print("good")
         return f"Reponse: {response_dict["message"]}" , output

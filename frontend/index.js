@@ -27,7 +27,7 @@ async function genFlashcard() {
     }
 };
 async function processFlashcards() {
-    const data = await genFlashcard(); // Pauses execution until the data is returned
+    const data = await genSchedule(); // Pauses execution until the data is returned
     console.log(data); // This now logs the actual flashcard data
 }
 
