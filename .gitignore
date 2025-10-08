@@ -6,5 +6,13 @@ __pycache__/
 # Virtual environment
 StudyMateVenv/
 
+# DS_Store
+.DS_Store
+
 # Sensitive files
 credentials.json
+token.json
+
+# Test files
+taskDB.csv
+taskManager.py
