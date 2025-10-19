@@ -7,7 +7,12 @@ from fastapi.middleware.cors import CORSMiddleware
 
 # Scripts
 from scripts.chatscheduler import chatScheduler
+
 from scripts.flashcardsGen import GenFlashcards
+
+from scripts.tasksManager import markAsComplete
+from scripts.tasksManager import readTasks
+from scripts.tasksManager import addTask
 
 class Product(BaseModel):
     prompt: str
@@ -39,3 +44,19 @@ def genFlashcards(subject: str):
         flashcards = response["flashcards"]
         
         return flashcards
+
+@app.get("/tasksManagement/markAsComplete/{id}")
+def marksAsCompleted(id):
+    if id:
+        id = int(id)
+        return markAsComplete(id)
+
+@app.get("/tasksManagement/getTasks")
+def getTasks():
+    tasks = readTasks()
+    return tasks
+
+@app.get("/tasksManagement/addTask/{taskName}")
+def addNewTask(taskName):
+    if taskName:
+        return addTask(taskName)
