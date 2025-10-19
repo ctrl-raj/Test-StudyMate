@@ -28,6 +28,7 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
+# - Chat and Schedule
 @app.get("/chat_response/{prompt}")
 async def chatResponse(prompt: str):
     if prompt:
@@ -37,6 +38,7 @@ async def chatResponse(prompt: str):
             "other": other
         }
 
+# - Get Flashcards
 @app.get("/flashcards/{subject}")
 def genFlashcards(subject: str):
     if subject:
@@ -45,6 +47,7 @@ def genFlashcards(subject: str):
         
         return flashcards
 
+# - Manage Tasks and To-Do List
 @app.get("/tasksManagement/markAsComplete/{id}")
 def marksAsCompleted(id):
     if id:
@@ -60,3 +63,10 @@ def getTasks():
 def addNewTask(taskName):
     if taskName:
         return addTask(taskName)
+
+# - Get User Data
+@app.get("/getUserData")
+def getUserdata():
+    with open('userDatabase.json','r') as file:
+        data = file.read()
+        return data

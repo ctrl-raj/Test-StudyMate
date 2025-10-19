@@ -1,0 +1,19 @@
+{
+    "id": 0,
+    "userName": "Joshua Pearce",
+    "activities": {
+        "studyHrs_Daily": "2:45",
+        "studyHrs_Weekly": "12:00",
+        "flashcardsReviewed": 16,
+        "tasksCompleted": 2,
+        "focusSessions": 13
+    },
+    "progress": {
+        "december": {
+            "week1": 12,
+            "week2": 8,
+            "week3": 9,
+            "week4": 10
+        }
+    }
+}
