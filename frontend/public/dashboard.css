@@ -79,3 +79,89 @@ body {
     color: #aaa;
     margin-bottom: 30px;
 }
+.main-content .container{
+    width: 50%;
+    height: 100vh;
+    background-color: #0a0a0f;
+    display: inline-block;
+    align-items: center;
+    justify-content: left;
+}
+.weeklyProgress{
+    background-color: #1a1a2e;
+    padding: 20px;
+    border: solid #a654f7 1px;
+    border-radius: 10px;
+    min-width: 40vh;
+}
+.weeklyProgress h1{
+    font-weight: 400;
+    letter-spacing: 1px;
+    margin-top: 5px;
+    color: #fff;
+    font-size: 15px;
+}
+.weeklyProgress h2{
+    font-weight: 400;
+    letter-spacing: 1px;
+    margin-top: 20px;
+    margin-bottom: 2px;
+    color: #fff;
+    font-size: 16px;
+}
+.progress-bar{
+    background: #959595;
+    width: 900;
+    height: 5px;
+    border-radius: 5px;
+}
+.progress-bar div{
+    height: 5px;
+    border-radius: 5px;
+    width: 0%;
+    background: #a654f7;
+
+    animation: progress-bar 1s ease forwards;
+}
+.progress-bar .study-hours{
+    animation: study-hours 1s ease forwards;
+}
+.progress-bar .flashcards-reviewed{
+    animation: flashcards-reviewed 1s ease forwards;
+}
+.progress-bar .focus-sessions{
+    animation: focus-sessions 1s ease forwards;
+}
+.progress-bar div span{
+    height: 20px;
+    width: 20px;
+    font-size: 10px;
+    border: solid hsl(270, 91%, 70%) 1px;
+    border-radius: 50%;
+    background-color: #222;
+    float: right;
+    margin-top: -8px;
+    margin-right: -20px;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    animation: html 1s linear forwards;
+}
+
+@keyframes study-hours{
+    100%{
+        width: 46%;
+    }
+}
+@keyframes flashcards-reviewed{
+    100%{
+        width: 65%;
+    }
+}
+@keyframes focus-sessions{
+    100%{
+        width: 45%;
+    }
+}
