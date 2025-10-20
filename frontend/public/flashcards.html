@@ -34,11 +34,16 @@
             </div>
                 <div class="subject-display">
                     <div class="sub-box">
-                        <div id="mathematics-display" class="subject-display">Mathematics</div>
-                        <p id="math-chapter" class="chapter">- Chapter -</p>
-                        <p id="math-question" class="question">- Question -</p>
-                        <p id="math-answer" class="answer">- Answer -</p>
-                        <button id="math-start-btn" class="start-btn">Start</button>
+                        <select name="subject-select" id="subject-select" class="subject-select">
+                            <option value="default">Select Subject</option>
+                            <option value="mathematics">Mathematics</option>
+                            <option value="physics">Physics</option>
+                            <option value="chemistry">Chemistry</option>
+                        </select>
+                        <p id="chapter" class="chapter">- Chapter -</p>
+                        <p id="question" class="question">- Question -</p>
+                        <p id="answer" class="answer">- Answer -</p>
+                        <button id="start-btn" class="start-btn">Load</button>
                     </div>
                 </div>
         </main>
