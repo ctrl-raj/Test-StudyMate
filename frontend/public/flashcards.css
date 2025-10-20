@@ -79,3 +79,46 @@ body {
     color: #aaa;
     margin-bottom: 30px;
 }
+
+/*Subject Tiles*/
+.subject-display{
+    display: flex;
+    flex-direction: row;
+}
+
+.sub-box {
+    font-size: 30px;
+    font-weight: 400;
+    background-color: #151621;
+    border: 1px solid #a654f7;
+    border-radius: 12px;
+    margin: 8px;
+    padding: 20px;
+    width: 300px;
+    text-align: center;
+    box-shadow: 0 0 25px rgba(127, 85, 177, 0.2);
+    justify-items: center;
+}
+
+/* Buttons */
+.start-btn {
+    background-color: #a654f7;
+    border: none;
+    color: #fff;
+    padding: 5px 50px;
+    border-radius: 8px;
+    font-size: 1rem;
+    cursor: pointer;
+    margin-top: 100px;
+    margin-bottom: 8px;
+    border: solid #a654f7;
+}
+.start-btn:hover{
+    background-color: #151621;
+    border: solid #a654f7;
+}
+
+.break-btn:hover {
+    color: #fff;
+    border: solid #fff;
+}
