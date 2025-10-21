@@ -87,15 +87,19 @@ body {
     align-items: center;
     justify-content: left;
 }
+.first-row{
+    display: flex;
+    flex-direction: row;
+}
 .weeklyProgress{
     background-color: #1a1a2e;
     padding: 20px;
     border: solid #a654f7 1px;
     border-radius: 10px;
-    min-width: 40vh;
+    min-width: 50vh;
 }
 .weeklyProgress h1{
-    font-weight: 400;
+    font-weight: 500;
     letter-spacing: 1px;
     margin-top: 5px;
     color: #fff;
@@ -164,4 +168,38 @@ body {
     100%{
         width: 45%;
     }
+}
+
+
+.recentAcitivies{
+    background-color: #1a1a2e;
+    padding: 20px;
+    border: solid #a654f7 1px;
+    border-radius: 10px;
+    min-width: 50vh;
+    margin-left: 15px;
+}
+.recentAcitivies h1{
+    font-weight: 500;
+    letter-spacing: 1px;
+    margin-top: 5px;
+    color: #fff;
+    font-size: 15px;
+}
+.recentAcitivies h2{
+    font-weight: 400;
+    letter-spacing: 1px;
+    margin-top: 20px;
+    margin-bottom: 2px;
+    color: #fff;
+    font-size: 16px;
+}
+.recentAcitivies h4{
+    font-weight: 300;
+    letter-spacing: 1px;
+    color: #fff;
+    font-size: 12px;
+}
+.recentAcitivies li{
+    margin-left: 10px;
 }
