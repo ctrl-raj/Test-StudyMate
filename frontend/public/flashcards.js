@@ -200,5 +200,10 @@ startBtn.onclick = () => {
             questionDis.innerText = question;
             answerDis.innerText = answer;
         }
+        else{
+            topicDis.innerText = "- Chapter -";
+            questionDis.innerText = "- Question -";
+            answerDis.innerText = "- Answer -";
+        }
     }
 }
