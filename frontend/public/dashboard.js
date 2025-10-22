@@ -1,18 +1,19 @@
-// -- Functions -- 
-async function getUserData(){
-    const response = await fetch("http://127.0.0.1:8000/getUserData")
-    if(!response.ok){
-        throw new Error("Could Not Fetch User Data")
-    }
+const inputBox = document.getElementById("task-input");
+const taskList = document.getElementById("task-list");
+const addBtn = document.getElementById("add-btn");
 
-    const data = await response.json()
-    return data
+function addTask(){
+    if(inputBox.value === ""){
+        window.alert("You must give a name to the Task!!!")
+    }
+    else{
+        let item = document.createElement("li");
+        item.textContent = inputBox.value;
+        taskList.appendChild(item);
+        let cross = document.createElement("span");
+        cross.innerHTML = "\u00d7";
+        item.appendChild(cross);
+    }
+    inputBox.value = "";
 }
-getUserData()
-    .then(userObject => {
-        userData = JSON.parse(userObject)
-        console.log(userData)
-    })
-    .catch(error => {
-        console.error("Error handling user data:", error);
-    });
+addBtn.onclick = addTask

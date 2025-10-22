@@ -34,40 +34,52 @@
             <div class="container">
                     <div class="first-row">
                         <div class="weeklyProgress">
-                        <h1>Your Weekly Progress</h1>
-                        <h2>Study Hours</h2>
-                        <div class="progress-bar">
-                            <div class="study-hours">
-                                <span>86</span>
+                            <h1>Your Weekly Progress</h1>
+                            <h2>Study Hours</h2>
+                            <div class="progress-bar">
+                                <div class="study-hours">
+                                    <span>4</span>
+                                </div>
+                            </div>
+                            <h2>Flashcards Reviewed</h2>
+                            <div class="progress-bar">
+                                <div class="flashcards-reviewed">
+                                    <span>12</span>
+                                </div>
+                            </div>
+                            <h2>Focus Sessions</h2>
+                            <div class="progress-bar">
+                                <div class="focus-sessions">
+                                    <span>3</span>
+                                </div>
                             </div>
                         </div>
-                        <h2>Flashcards Reviewed</h2>
-                        <div class="progress-bar">
-                            <div class="flashcards-reviewed">
-                                <span>86</span>
-                            </div>
-                        </div>
-                        <h2>Focus Sessions</h2>
-                        <div class="progress-bar">
-                            <div class="focus-sessions">
-                                <span>86</span>
-                            </div>
+                        <div class="recentAcitivies">
+                            <h1>Recent Activity</h1>
+                            <ul id="recentAcitiviesList">
+                                <li>
+                                    <h2>Completed 25-minute focus session</h2>
+                                    <h4>Mathematics • 2 hours ago</h4>
+                                </li>
+                            </ul>
                         </div>
                     </div>
-                    <div class="recentAcitivies">
-                        <h1>Recent Activity</h1>
-                        <ul id="recentAcitiviesList">
-                            <li>
-                                <h2>Completed 25-minute focus session</h2>
-                                <h4>Mathematics • 2 hours ago</h4>
-                            </li>
-                        </ul>
+                    <div class="second-row">
+                        <div class="tasks-div">
+                            <div class="header">
+                                <h1>Tasks & To-Do List</h1>
+                                <input type="text" id="task-input" placeholder="Enter Task Name">
+                                <button id="add-btn">+ Add Task</button>
+                            </div>
+                            <ul id="task-list" class="task-list">
+                                <li>task 1</li>
+                                <li>task 2</li>
+                                <li>task 3</li>
+                            </ul>
+                        </div>
                     </div>
-                    </div>
-            </div>
         </main>
     </div>
     <script src="dashboard.js"></script>
-    <script src="flashcards.js"></script>
 </body>
 </html>

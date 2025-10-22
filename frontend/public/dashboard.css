@@ -94,9 +94,9 @@ body {
 .weeklyProgress{
     background-color: #1a1a2e;
     padding: 20px;
-    border: solid #a654f7 1px;
+    box-shadow: 0 0 12px rgba(150, 80, 255, 0.6);
     border-radius: 10px;
-    min-width: 50vh;
+    min-width: 47vh;
 }
 .weeklyProgress h1{
     font-weight: 500;
@@ -106,12 +106,12 @@ body {
     font-size: 15px;
 }
 .weeklyProgress h2{
-    font-weight: 400;
+    font-weight: 300;
     letter-spacing: 1px;
     margin-top: 20px;
     margin-bottom: 2px;
     color: #fff;
-    font-size: 16px;
+    font-size: 14px;
 }
 .progress-bar{
     background: #959595;
@@ -156,17 +156,17 @@ body {
 
 @keyframes study-hours{
     100%{
-        width: 46%;
+        width: 65%;
     }
 }
 @keyframes flashcards-reviewed{
     100%{
-        width: 65%;
+        width: 45%;
     }
 }
 @keyframes focus-sessions{
     100%{
-        width: 45%;
+        width: 78%;
     }
 }
 
@@ -174,10 +174,10 @@ body {
 .recentAcitivies{
     background-color: #1a1a2e;
     padding: 20px;
-    border: solid #a654f7 1px;
+    box-shadow: 0 0 12px rgba(150, 80, 255, 0.6);
     border-radius: 10px;
-    min-width: 50vh;
-    margin-left: 15px;
+    min-width: 47vh;
+    margin-left: 30px;
 }
 .recentAcitivies h1{
     font-weight: 500;
@@ -187,7 +187,7 @@ body {
     font-size: 15px;
 }
 .recentAcitivies h2{
-    font-weight: 400;
+    font-weight: 300;
     letter-spacing: 1px;
     margin-top: 20px;
     margin-bottom: 2px;
@@ -201,5 +201,84 @@ body {
     font-size: 12px;
 }
 .recentAcitivies li{
-    margin-left: 10px;
+    margin-left: 15px;
+}
+
+.second-row{
+    margin-top: 30px;
+}
+.tasks-div{
+    background-color: #18182b;
+    border-radius: 16px;
+    box-shadow: 0 0 12px rgba(150, 80, 255, 0.6);
+    padding: 20px;
+    border-radius: 10px;
+    min-width: 97vh;
+    min-height: 50vh;
+}
+.tasks-div h1{
+    font-weight: 500;
+    letter-spacing: 1px;
+    margin-top: 5px;
+    color: #fff;
+    font-size: 16px;
+}
+.header{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 5px;
+}
+.header input{
+    height: 35px;
+    width: 400px;
+    margin-left: 275px;
+    margin-right: 20px;
+    background-color: #181c33;
+    color: #fff;
+    padding-left: 10px;
+    border-radius: 10px;
+    border: 1px solid rgba(150, 80, 255, 0.6);
+}
+.header button{
+    color: #fff;
+    background-color: #a654f7;
+    border-radius: 10px;
+    padding-left: 2px;
+    padding-right: 2px;
+    height: 35px;
+    width: 90px;
+    border: #a654f7;
+}
+button:hover {
+    cursor: pointer;
+}
+.task-container {
+    display: flex;
+    justify-content: space-between;
+}
+.task-list li {
+    list-style: none;
+    font-size: 16px;
+    font-weight: 300;
+    padding: 12px 8px 12px 50px;
+    user-select: none;
+    cursor: pointer;
+    position: relative;
+}
+
+.task-list li::before {
+    content: "";
+    position: absolute;
+    height: 20px;
+    width: 20px;
+    border-radius: 50%;
+    background-image: url("images/unchecked.png");
+    background-size: cover;
+    background-position: center;
+    top: 12px;
+    left: 8px;
+}
+.task-status {
+    flex: 1;
+    padding: 10px;
 }
