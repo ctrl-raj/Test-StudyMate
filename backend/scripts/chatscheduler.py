@@ -8,7 +8,7 @@ import webbrowser
 import time as t
 
 # Script
-import scripts.eventManager as eventManager
+import eventManager
 
 # FUNCTION EXECUTER
 def execute(name: dict, arguments: dict):
