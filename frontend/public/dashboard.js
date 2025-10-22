@@ -15,5 +15,26 @@ function addTask(){
         item.appendChild(cross);
     }
     inputBox.value = "";
+    saveData()
 }
 addBtn.onclick = addTask
+
+taskList.addEventListener("click", function(e){
+    if(e.target.tagName === "LI"){
+        e.target.classList.toggle("checked");
+        saveData();
+    }
+    else{
+        e.target.parentElement.remove();
+        saveData();
+    }
+}, false);
+
+function saveData(){
+    localStorage.setItem("tasks-data", taskList.innerHTML);
+}
+
+function showTasks(){
+    taskList.innerHTML = localStorage.getItem("tasks-data");
+}
+showTasks();
