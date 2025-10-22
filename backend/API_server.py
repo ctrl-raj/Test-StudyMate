@@ -6,9 +6,7 @@ from pydantic import BaseModel
 from fastapi.middleware.cors import CORSMiddleware
 
 # Scripts
-from scripts.chatscheduler import chatScheduler
-
-from scripts.flashcardsGen import GenFlashcards
+from chatscheduler import chatScheduler
 
 class Product(BaseModel):
     prompt: str
