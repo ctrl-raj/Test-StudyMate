@@ -12,11 +12,11 @@ The project is currently under development — backend is being built, while fro
 - Chatbot converts natural language → calendar events.  
 - Visual calendar view (Google Calendar style).  
 
-### 2. **Flashcards Maker** 📋
+### 2. **Flashcards Maker** ✅
 - Auto-generate flashcards from notes or textbooks.  
 - *“Test Me Mode”* → random flashcards for quick practice.  
 
-### 3. **Task/Assignment Manager** 📋
+### 3. **Task/Assignment Manager** ✅
 - Example: “Remind me to finish my Physics homework by Friday.”  
 - Stores tasks with deadlines, checklist view in frontend.  
 
@@ -24,7 +24,7 @@ The project is currently under development — backend is being built, while fro
 - Upload notes (text/PDFs).  
 - Backend (Hugging Face model) creates concise summaries.  
 
-### 5. **Daily Study Analytics** 📊
+### 5. **Daily Study Analytics** ✅
 - Track study hours per subject.  
 - Weekly reports: *“You studied Physics 40%, Math 30%...”*  
 
@@ -32,7 +32,7 @@ The project is currently under development — backend is being built, while fro
 - AI splits subjects across days until exam.  
 - Shows countdown timer and daily study goals.  
 
-### 7. **Distraction Blocker Suggestions** 🚫📱
+### 7. **Distraction Blocker Suggestions** 🚫
 - Chatbot suggests Pomodoro breaks or motivational nudges.  
 
 ### 8. **Group Study Mode (Future)** 👥
@@ -41,6 +41,24 @@ The project is currently under development — backend is being built, while fro
 ### 9. **Voice Command Input (Optional)** 🎤
 - Speak instead of type: *“Add Physics at 4pm tomorrow.”*  
 - Uses Web Speech API (JS) for speech-to-text.  
+
+---
+
+## Activation
+- Backend Side
+```Bash
+ollama create rookie -f backend/models/Rookie.Modelfile
+ollama serve
+```
+```Bash
+pip install -f requirements.txt
+cd backend
+uvicorn API_server:app
+```
+
+- Frontend -> Directly Open 'dashboard.html'
+
+---
 
 ---
 
