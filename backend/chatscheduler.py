@@ -11,7 +11,7 @@ import time as t
 import eventManager
 
 # FUNCTION EXECUTER
-def execute(name: dict, arguments: dict):
+def execute(name, arguments: dict):
     try:
         if name == "getEvent":
             print("Getting Upcomming Events...")
