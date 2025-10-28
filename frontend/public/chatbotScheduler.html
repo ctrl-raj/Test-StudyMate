@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>StudyMate - Chat & Schedule</title>
     <link rel="stylesheet" href="chatbotScheduler.css">
+    <script src="https://kit.fontawesome.com/83a1fb6010.js" crossorigin="anonymous"></script>
 </head>
 <body>
     <div class="container">
@@ -33,9 +34,23 @@
                 <p>Chat with Rookie and Schedule your success.</p>
             </div>
 
-            <!-- Content -->
+            <div class="chatbot">
+                <header>
+                    <h2>Chatbot</h2>
+                </header>
+
+                <ul class="chatbox">
+                    <li class="chat incoming">
+                        <p>Hi there <br>How can I help you today?</p>
+                    </li>
+                </ul>
+                <div class="chat-input">
+                    <textarea placeholder="Enter a Message..." required></textarea>
+                    <span class="fa-solid fa-paper-plane"></span>
+                </div>
             </div>
         </main>
     </div>
+    <script src="chatbotScheduler.js"></script>
 </body>
 </html>

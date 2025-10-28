@@ -34,7 +34,7 @@ async def startOllama():
 @app.on_event("shutdown")
 async def stopOllama():
     if ollamaProcess:
-        os.kill(ollama_proc.pid, signal.SIGTERM)
+        os.kill(ollamaProcess.pid, signal.SIGTERM)
         print("-Ollama Stopped")
 
 # - Chat and Schedule
