@@ -101,7 +101,12 @@ body {
 }
 
 /* Chatbot Specific Styles */
-.chatbot-messages {
+.content-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+}
+.incoming {
     flex: 1;
     overflow-y: auto;
     margin-bottom: 1rem;
@@ -115,31 +120,29 @@ body {
     max-width: 50%; /* max-w-xl is 36rem, use % for fluid width */
 }
 
-.user-message {
+#chat-list .outgoing {
     text-align: right;
     display: flex;
     justify-content: flex-end;
 }
-
-.user-message > .chat-bubble {
-    background-color: rgba(75, 85, 99, 0.2); /* bg-gray-600/20 */
-    border-radius: 0.75rem 0.75rem 0 0.75rem;
-    color: #f3f4f6;
+#chat-list .outgoing p {
+    margin-top: 5px;
+    border-radius: 0.75rem 0 0.75rem 0.75rem
 }
 
-.ai-message {
+.incoming {
     text-align: left;
     display: flex;
     justify-content: flex-start;
 }
-
-.ai-message > .chat-bubble {
+.chat-bubble {
     background-color: rgba(147, 51, 234, 0.2); /* bg-purple-600/20 */
-    border-radius: 0.75rem 0.75rem 0.75rem 0;
+    border-radius: 0rem 0.75rem 0.55rem 0.75rem;
     color: #e5e7eb;
 }
 
 .chat-input-container {
+    margin-top: 30px;
     display: flex;
 }
 
@@ -166,6 +169,7 @@ body {
     transition: background-color 0.2s;
     border: none;
     cursor: pointer;
+    border: #8b5cf6 solid 1px;
 }
 
 .chat-send-button:hover {

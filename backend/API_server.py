@@ -41,7 +41,9 @@ async def stopOllama():
 @app.get("/chat_response/{prompt}")
 async def chatResponse(prompt: str):
     if prompt:
-        response, other = await chatScheduler(prompt)
+        data = list(chatScheduler(prompt))
+        response = data[0]
+        other = data[1]
         return {
             "response": response,
             "other": other

@@ -1,13 +1,13 @@
-const chatInput = document.querySelector(".chat-input textarea")
-const sendBtn = document.querySelector(".chat-input span");
-const chatbox = document.querySelector(".chatbox");
+const chatInput = document.querySelector(".chat-input")
+const sendBtn = document.querySelector(".chat-send-button");
+const chatbox = document.querySelector(".chatbot-messages");
 
 let userMessage;
 const createChatLi = (message, className) => {
     const chatLi = document.createElement("li");
     chatLi.classList.add("chat", className);
     
-    let chatContent = className === "outgoing" ? `<p>${message}</p>` : `<p>${message}</p>`
+    let chatContent = className === "outgoing" ? `<p class="chat-bubble">${message}</p>` : `<p class="chat-bubble">${message}</p>`
     chatLi.innerHTML = chatContent;
     
     return chatLi
@@ -28,7 +28,6 @@ async function generateResponse(prompt){
         console.log(error)
     }
 }
-generateResponse("Hello");
 
 const handleChat = () => {
     userMessage = chatInput.value.trim();
@@ -40,6 +39,11 @@ const handleChat = () => {
         chatbox.appendChild(createChatLi("Thinking...", "incoming"));
         //generateResponse();
     }, 600)
+    userMessage = userMessage.replace(" ","_");
+    console.log(generateResponse(userMessage));
 }
 
-sendBtn.addEventListener("click", handleChat);
+sendBtn.addEventListener("click", () => {
+    handleChat();
+    chatInput.value = "";
+});

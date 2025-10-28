@@ -105,6 +105,10 @@ def postEvent(title: str, description: str, date: int, time_hr: int, recurrence_
 
 # CHECK EVENT FUNCTION
 def checkEvent(date_string: str):
+    creds = None
+
+    if os.path.exists("token.json"):
+        creds = Credentials.from_authorized_user_file("token.json", SCOPES)
     # Pre-processing of date_string
     import pytz
     date_string = "2025-09-25"
