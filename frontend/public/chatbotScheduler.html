@@ -34,21 +34,27 @@
                 <p>Chat with Rookie and Schedule your success.</p>
             </div>
 
-            <div class="chatbot">
-                <header>
-                    <h2>Chatbot</h2>
-                </header>
-
-                <ul class="chatbox">
-                    <li class="chat incoming">
-                        <p>Hi there <br>How can I help you today?</p>
-                    </li>
-                </ul>
-                <div class="chat-input">
-                    <textarea placeholder="Enter a Message..." required></textarea>
-                    <span class="fa-solid fa-paper-plane"></span>
+            <div class="content-card">
+                    <div class="chatbot-messages space-y-4">
+                        <div class="ai-message">
+                            <div class="chat-bubble">
+                                Hello! I'm your AI study assistant and scheduler
+                                . What would you like to work on today?
+                            </div>
+                        </div>
+                        <div class="user-message">
+                            <div class="chat-bubble">
+                                Genrate a quiz for me on the topic of photosynthesis.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="chat-input-container">
+                        <input type="text" placeholder="Ask the AI or schedule an event..." class="chat-input" />
+                        <button class="chat-send-button">
+                            Send
+                        </button>
+                    </div>
                 </div>
-            </div>
         </main>
     </div>
     <script src="chatbotScheduler.js"></script>
