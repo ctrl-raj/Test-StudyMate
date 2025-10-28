@@ -18,7 +18,7 @@ ollamaProcess = None
 # - CORS configuration
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://127.0.0.1:5500"],  # 127.0.0.1:5500/frontend/public/index.html
+    allow_origins=["*"],  # 127.0.0.1:5500/frontend/public/index.html
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],

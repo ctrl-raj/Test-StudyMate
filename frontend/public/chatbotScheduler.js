@@ -22,25 +22,34 @@ async function generateResponse(prompt){
         }
         
         const data = await response.json();
-        console.log(data)
+        let message = data.response;
+        let other = data.other;
+        
+        return [message, other]
     }
     catch(error){
         console.log(error)
     }
 }
 
-const handleChat = () => {
+async function handleChat(){
     userMessage = chatInput.value.trim();
     if(!userMessage) return;
 
     chatbox.appendChild(createChatLi(userMessage, "outgoing"));
-
-    setTimeout(() => {
-        chatbox.appendChild(createChatLi("Thinking...", "incoming"));
-        //generateResponse();
-    }, 600)
+    
     userMessage = userMessage.replace(" ","_");
-    console.log(generateResponse(userMessage));
+
+    responseArr = await generateResponse(userMessage);
+    setTimeout(() => {
+        chatbox.appendChild(createChatLi(responseArr[0], "incoming"));
+    }, 1200)
+    
+    if(!responseArr=="null"){
+        setTimeout(() => {
+            chatbox.appendChild(createChatLi(responseArr[1], "incoming"));
+        }, 1800)
+    }
 }
 
 sendBtn.addEventListener("click", () => {

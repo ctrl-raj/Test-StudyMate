@@ -73,7 +73,7 @@ def chatScheduler(prompt: str):
     response_dict = json.loads(response_string)
 
     # call tools
-    tool_calls = response_dict["tool_calls"]
+    tool_calls = response_dict.get("tool_calls")
 
     if len(tool_calls) == 0:
         print("No Functions Called By Rookie...")
