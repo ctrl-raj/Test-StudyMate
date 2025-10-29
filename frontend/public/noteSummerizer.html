@@ -31,11 +31,20 @@
             <div class="section-header">
                 <h3>Notes Summerizer</h3>
                 <p>Summerize your notes, efforlessly.</p>
-            </div class="focus-box">
-
-            <!-- Content --> 
+            <div class="focus-box">
+                <h4>Content Summeriser</h4>
+                <p id="session-title">Upload Content & Summeriser It</p>
+                <div class="content" id="content">
+                    <button id="start-btn" class="start-btn">Start</button><br>
+                    <input type="file" id="file" accept="image/png, image/jpeg, image/jpg">
+                    <label for="file" id="file-label">Upload Content</label>
+                </div>
+                <div class="break-options">
+                    <button id="reset-btn" class="break-btn">Reset</button>
+                </div>
             </div>
         </main>
     </div>
+    <script src="noteSummerizer.js"></script>
 </body>
 </html>
