@@ -133,7 +133,7 @@ def checkEvent(date_string: str):
     try:
         service = build("calendar", "v3", credentials=creds)
 
-        maxResults = 10
+        maxResults = 2
         event_result = service.events().list(
             calendarId="primary",
             timeMin=date,   # using a specific date
@@ -163,10 +163,3 @@ def checkEvent(date_string: str):
         
     except HttpError as error:
         print("Error: ",error)
-
-
-if __name__ == "__main__":
-    summary = input("Summary: ")
-    description = input("Description: ")
-    date = input("Date (YYYY-MM-DD): ")
-    postEvent(summary=summary, description=description, date=date, recurrence_count=4, time_hr=20, colorInt=1)

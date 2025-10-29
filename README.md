@@ -45,10 +45,11 @@ The project is currently under development — backend is being built, while fro
 ---
 
 ## Activation
-- Backend Side
+- Backend Side ->
+Install [Ollama](https://ollama.com/)
 ```Bash
+ollama pull mistral
 ollama create rookie -f backend/models/Rookie.Modelfile
-ollama serve
 ```
 ```Bash
 pip install -f requirements.txt

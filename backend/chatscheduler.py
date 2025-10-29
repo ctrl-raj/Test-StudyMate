@@ -17,22 +17,14 @@ def execute(name, arguments: dict):
             print("Getting Upcomming Events...")
 
             events = eventManager.getEvent()
-            
-            table_data = [[date, event] for date, event in events.items()]
-            headers = ["Date", "Event"]
-            event_table = tabulate.tabulate(table_data, headers=headers, tablefmt="github")
-            return event_table
+            return events
 
         elif name == "checkEvent":
             date = arguments["date"]
             print(f"Checking Events on {date}...")
 
             events = eventManager.checkEvent(arguments["date"])
-
-            table_data = [[date, event] for date, event in events.items()]
-            headers = ["Date", "Event"]
-            event_table = tabulate.tabulate(table_data, headers=headers, tablefmt="github")
-            return event_table
+            return events
     
         elif name == "postEvent":
 
