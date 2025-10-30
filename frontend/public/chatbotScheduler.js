@@ -33,20 +33,26 @@ async function generateResponse(prompt){
 }
 
 async function handleChat(){
+
     userMessage = chatInput.value.trim();
     if(!userMessage) return;
 
     chatbox.appendChild(createChatLi(userMessage, "outgoing"));
-    userMessage = userMessage.replace(" ","_");
+
+    // 'Thinking' message
+    let templi = createChatLi("Thinking . . .", "temp-li")
+    chatbox.appendChild(templi)
 
     responseArr = await generateResponse(userMessage);
     eventObject = responseArr[1];
+    console.log(eventObject)
 
-    setTimeout(() => {
-        chatbox.appendChild(createChatLi(responseArr[0], "incoming"));
-        }, 100)
+    templi.remove() // removes 'Thinking message'
 
-    if(!eventObject.events == null){
+    chatbox.appendChild(createChatLi(responseArr[0], "incoming"));
+
+    if(eventObject){
+
         let eventArr = eventObject.events;
         let masterString = '';
         for (const event of eventArr) {
@@ -56,7 +62,6 @@ async function handleChat(){
                 chatbox.appendChild(createChatLi(masterString, "incoming"));
             }, 600);
     }
-
 }
 
 sendBtn.addEventListener("click", () => {
