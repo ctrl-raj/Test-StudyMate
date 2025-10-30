@@ -36,7 +36,7 @@ def getEvent():
         # get 20 upcoming events
         now = dt.datetime.now().isoformat() + "Z"
 
-        maxResults = 10
+        maxResults = 4
         event_result = service.events().list(
             calendarId="primary",
             timeMin=now,
@@ -49,12 +49,26 @@ def getEvent():
         if not events:
             return "No events found"
         
-        eventDict = {}
+        removeDuplicates = []
+        seen = set()
 
         for event in events:
-            start = event["start"].get("dateTime", event["start"].get("date"))
-            item = {start: event["summary"]}
-            eventDict.update(item)
+            start = event["start"].get("datetime", event["start"].get("date"))
+            summary = event["summary"]
+            
+            # Create a hashable tuple as identifier
+            identifier = (start, summary)
+            
+            if identifier not in seen:
+                seen.add(identifier)
+                removeDuplicates.append({
+                    "start": start,
+                    "summary": summary
+                })
+
+        eventDict = {
+            "events": removeDuplicates  # contains list of unique events
+        }
 
         return eventDict
         

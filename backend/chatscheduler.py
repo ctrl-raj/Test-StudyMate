@@ -79,4 +79,4 @@ def chatScheduler(prompt: str):
         output = execute(function_name, function_arguments)
         if output:
             print("good")
-        return f"Reponse: {response_dict["message"]}" , output
+        return response_dict["message"] , output
