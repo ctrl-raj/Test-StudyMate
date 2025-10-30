@@ -40,22 +40,22 @@ async function handleChat(){
     chatbox.appendChild(createChatLi(userMessage, "outgoing"));
 
     // 'Thinking' message
-    let templi = createChatLi("Thinking . . .", "temp-li")
-    chatbox.appendChild(templi)
+    const listItem = document.createElement('li');
+    listItem.classList.add('temp-li');
+    listItem.innerHTML = `<progress></progress>`
+    chatbox.appendChild(listItem)
 
     responseArr = await generateResponse(userMessage);
     eventObject = responseArr[1];
     console.log(eventObject)
 
-    templi.remove() // removes 'Thinking message'
+    listItem.remove() // removes 'Thinking message'
 
     chatbox.appendChild(createChatLi(responseArr[0], "incoming"));
 
     if(eventObject){
-
-        let eventArr = eventObject.events;
         let masterString = '';
-        for (const event of eventArr) {
+        for (const event of eventObject.events) {
                 masterString += `${event.summary} - ${event.start}<br>`;
             }
             setTimeout(() => {
