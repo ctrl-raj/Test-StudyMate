@@ -37,25 +37,26 @@ async function handleChat(){
     if(!userMessage) return;
 
     chatbox.appendChild(createChatLi(userMessage, "outgoing"));
-    
     userMessage = userMessage.replace(" ","_");
 
     responseArr = await generateResponse(userMessage);
-    
     eventObject = responseArr[1];
-    let eventArr = eventObject.events;
-    console.log(eventArr);
 
     setTimeout(() => {
         chatbox.appendChild(createChatLi(responseArr[0], "incoming"));
-    }, 100)
-    let masterString = '';
-    for (const event of eventArr) {
-        masterString += `${event.summary} - ${event.start}<br>`;
+        }, 100)
+
+    if(!eventObject.events == null){
+        let eventArr = eventObject.events;
+        let masterString = '';
+        for (const event of eventArr) {
+                masterString += `${event.summary} - ${event.start}<br>`;
+            }
+            setTimeout(() => {
+                chatbox.appendChild(createChatLi(masterString, "incoming"));
+            }, 600);
     }
-    setTimeout(() => {
-        chatbox.appendChild(createChatLi(masterString, "incoming"));
-    }, 600);
+
 }
 
 sendBtn.addEventListener("click", () => {
