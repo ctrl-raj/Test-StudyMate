@@ -1,3 +1,14 @@
+// RECENT ACTIVITES MANAGEMENT
+const root = document.documentElement
+let studyHoursBar = '28%';
+let flashcardsBar = '40%';
+let focusSessionBar = '20%';
+
+root.style.setProperty('--study-hours-width', studyHoursBar);
+root.style.setProperty('--flashcard-reviewed-width', flashcardsBar);
+root.style.setProperty('--focus-sessions-width', focusSessionBar);
+
+// TASK LIST MANAGEMENT
 const inputBox = document.getElementById("task-input");
 const taskList = document.getElementById("task-list");
 const addBtn = document.getElementById("add-btn");

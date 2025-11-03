@@ -153,20 +153,26 @@ body {
 
     animation: html 1s linear forwards;
 }
+/* These values can be changed from JS */
+:root {
+    --study-hours-width: 65%;
+    --flashcard-reviewed-width: 45%;
+    --focus-sessions-width: 78%
+}
 
 @keyframes study-hours{
     100%{
-        width: 65%;
+        width: var(--study-hours-width);
     }
 }
 @keyframes flashcards-reviewed{
     100%{
-        width: 45%;
+        width: var(--flashcard-reviewed-width);
     }
 }
 @keyframes focus-sessions{
     100%{
-        width: 78%;
+        width: var(--focus-sessions-width);
     }
 }
 
