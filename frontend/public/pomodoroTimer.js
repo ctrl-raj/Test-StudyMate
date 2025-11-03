@@ -4,13 +4,13 @@ const resetBtn = document.getElementById("reset-btn");
 const sessionTitle = document.getElementById("session-title");
 
 let timer = null;
-let startTime = Date.now();
+let startTime = 0;
+let elapsedTime = 0;
 let totalDuration = 1500000;
 let isRunning = false;
 
 function start(){
     if(!isRunning){
-        elapsedTime = Date.now() - startTime;
         startTime = Date.now() - elapsedTime;
         timer = setInterval(update, 10);
         isRunning = true;
@@ -20,9 +20,9 @@ function stop(){
     if(isRunning){
         clearInterval(timer);
         elapsedTime = Date.now() - startTime;
-        let remainingTime = totalDuration - elapsedTime;
         isRunning = false;
 
+        let remainingTime = totalDuration - elapsedTime;
         let minutes = Math.floor(remainingTime/(1000 * 60) % 60);
         let seconds = Math.floor(remainingTime/1000 % 60);
 
@@ -34,8 +34,8 @@ function stop(){
 }
 function reset(){
     clearInterval(timer);
-    startTime = Date.now();
-    elapsedTime = Date.now() - startTime;
+    startTime = 0;
+    elapsedTime = 0;
     isRunning = false;
     startBtn.textContent = "Start"
 
@@ -44,23 +44,25 @@ function reset(){
 
 function update(){
     const currentTime = Date.now();
-    let elapsedTime = currentTime - startTime;
     elapsedTime = currentTime - startTime;
 
     let remainingTime = totalDuration - elapsedTime;
+
+    if(remainingTime <= 0){
+        remainingTime = 0;
+        stop();
+        sessionTitle.textContent = "You've Finished 25 Mins of Productivity 🚀";
+        timerDisplay.textContent = "00:00";
+        return;
+    }
 
     let minutes = Math.floor(remainingTime/(1000 * 60) % 60);
     let seconds = Math.floor(remainingTime/1000 % 60);
 
     minutes = String(minutes).padStart(2, "0");
     seconds = String(seconds).padStart(2, "0");
-    if(minutes=="25"){
-        stop();
-        sessionTitle.textContent = "You've Finished 25 Mins of Productivity 🚀";
-    }
-    else{
-        timerDisplay.textContent = `${minutes}:${seconds}`;
-    }
+    
+    timerDisplay.textContent = `${minutes}:${seconds}`;
 }
 
 startBtn.onclick = function(){
