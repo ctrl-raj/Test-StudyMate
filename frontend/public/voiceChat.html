@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StudyMate - Focus Session</title>
+    <link rel="stylesheet" href="voiceChat.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@40,400,0,0&icon_names=mic" />
+</head>
+<body>
+    <div class="container">
+        <!-- Left Sidebar -->
+        <aside class="sidebar">
+            <div class="app-header">
+                <h2>StudyMate</h2>
+                <p>Productivity Tool</p>
+                <a href="about.html"
+                target="_blank">© About</a>
+            </div>
+            <nav class="menu">
+                <a href="dashboard.html">Dashboard</a>
+                <a href="chatbotScheduler.html">Chatbot & Scheduler</a>
+                <a href="pomodoroTimer.html">Focus Session</a>
+                <a href="flashcards.html">Flashcards</a>
+                <a class="active" href="voiceChat.html">Voice Chat</a>
+                <a href="noteSummerizer.html">Notes Summarizer</a>
+                <a href="settings.html">Settings</a>
+            </nav>
+        </aside>
+
+        <!-- Right Main Section -->
+        <main class="main-content">
+            <div class="section-header">
+                <h3>Voice Chat</h3>
+                <p>Chat live which rookie.</p>
+            </div>
+
+            <div class="focus-box">
+                <button class="mic-toggle" id="mic">
+                    <span class="material-symbols-outlined">mic</span>
+                </button>
+
+                <audio class="playback" controls></audio>
+            </div>
+        </main>
+    </div>
+<script src="pomodoroTimer.js"></script>
+</body>
+</html>
