@@ -68,7 +68,19 @@ async def summariser(file: UploadFile = File(...)):
 @app.post("/generateAudioResponse/")
 async def generateAudioResponse(file: UploadFile = File(...)):
     # - dependencies
-    import speechRecognition
+    import voiceChat
+    import time
 
     webm_content = await file.read()
-    aiff_data_io = speechRecognition.blobToAIFF(webm_content)
+    audio_file_path = await voiceChat.blobToAIFF(webm_content)
+    if audio_file_path is not None:
+        text = await voiceChat.speechToText(audio_file_path)
+        response = voiceChat.getModelResponse(text)
+        audio_filename = int(time.time())
+        await voiceChat.textToSpeech(response, audio_filename)
+
+        return {
+            "prompt": text,
+            "response": response,
+            "audio_url": f"http://127.0.0.1:8000/static/{audio_filename}"
+        }

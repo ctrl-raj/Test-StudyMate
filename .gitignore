@@ -13,6 +13,5 @@ studymate/
 credentials.json
 token.json
 
-# Test files
-taskDB.csv
-taskManager.py
+# static
+backend/static/

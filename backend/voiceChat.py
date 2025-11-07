@@ -12,7 +12,7 @@ def clear_text(text: str):
     return text
 
 # webm(blob) to AIFF audio
-def blobToAIFF(webmData: bytes):
+async def blobToAIFF(webmData: bytes):
     from pydub import AudioSegment
     import io
     
@@ -23,35 +23,31 @@ def blobToAIFF(webmData: bytes):
     aiff_output.seek(0)
     
     output_file_name = "aiff_audio_data.aiff"
-    try:
-        aiff_bytes = aiff_output()
-        with open(output_file_name, "wb") as audioFile:
-            audioFile.write(aiff_bytes)
-        print(f"Saved as {output_file_name}")
-        return output_file_name
-    except Exception as e:
-        print(f"Error Saving the AIFF File: {e}")
+    
+    aiff_bytes = aiff_output.read()
+    with open(output_file_name, "wb") as audioFile:
+        audioFile.write(aiff_bytes)
+    print(f"Saved as {output_file_name}")
+    return output_file_name
 
 # speech to text script
-async def speech_rec(filePath: str):
+async def speechToText(filePath: str):
     import speech_recognition as sr
+    import os
     
     r = sr.Recognizer()
     file = sr.AudioFile(filePath)
     with file as source:
         audio = r.record(source)
         text = r.recognize_google(audio)
-    
+    if os.path.exists(filePath): # deletes the byte audio file
+        os.remove(filePath)
     return text
 
-def getModelResponse(prompt):
-    try:
-        requests.get("http://localhost:11434/api/tags", timeout=3)
-        print("✅ Ollama server is running")
-    except requests.ConnectionError:
-        print("❌ Ollama server is not running")
-        raise ConnectionError("Ollama server is not running. Please start it with 'ollama serve'")
-    
+# generate model output
+def getModelResponse(prompt: str):
+    import ollama
+
     client = ollama.Client()
     model = "maaya"
 
@@ -61,3 +57,9 @@ def getModelResponse(prompt):
     response = clear_text(response)
 
     return response
+
+# convert text to speech
+async def textToSpeech(text: str, fileName):
+    import edge_tts
+    tts = edge_tts.Communicate(text, voice="en-AU-WilliamNeural")
+    await tts.save(f"static/{fileName}.wav")
