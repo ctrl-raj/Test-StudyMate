@@ -1,5 +1,20 @@
---upgrade google-api-python-client google-auth-httplib2 google-auth-oauthlib
-ollama
 fastapi
+uvicorn
+pydantic
+python-multipart
+pydub
+SpeechRecognition
+edge-tts
+ollama
+Pillow
+pytesseract
 tabulate
+google-api-python-client
+google-auth
+google-auth-oauthlib
+google-auth-httplib2
 pytz
+
+# Notes:
+# - Install system deps: ffmpeg (for pydub), tesseract OCR (for pytesseract), and ollama CLI/server on PATH.
+# - To pin exact versions, activate your venv and run: pip freeze > requirements.txt
