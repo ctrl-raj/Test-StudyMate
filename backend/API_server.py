@@ -1,7 +1,7 @@
 # -- API Server -- #
 
 # Global Dependencies
-from fastapi import FastAPI, File, UploadFile
+from fastapi import FastAPI, File, UploadFile, staticfiles
 from pydantic import BaseModel
 from fastapi.middleware.cors import CORSMiddleware
 import subprocess, os, time, signal
@@ -10,6 +10,7 @@ class Product(BaseModel):
     prompt: str
 
 app = FastAPI(title="StudyMate Chat Server")
+app.mount("/static", staticfiles.StaticFiles(directory="static"), name="static")
 ollamaProcess = None
 
 # - CORS configuration
@@ -21,7 +22,6 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
-
 # - manage ollama
 @app.on_event("startup")
 async def startOllama():
@@ -71,16 +71,24 @@ async def generateAudioResponse(file: UploadFile = File(...)):
     import voiceChat
     import time
 
-    webm_content = await file.read()
-    audio_file_path = await voiceChat.blobToAIFF(webm_content)
-    if audio_file_path is not None:
-        text = await voiceChat.speechToText(audio_file_path)
-        response = voiceChat.getModelResponse(text)
-        audio_filename = int(time.time())
-        await voiceChat.textToSpeech(response, audio_filename)
+    print("==ENDPOINT-CALL==",flush=True)
 
-        return {
-            "prompt": text,
-            "response": response,
-            "audio_url": f"http://127.0.0.1:8000/static/{audio_filename}"
-        }
+    webm_content = await file.read()
+    print(f"Received {len(webm_content)} bytes")
+    audio_file_path = await voiceChat.blobToWAV(webm_content)
+
+    text = await voiceChat.speechToText(audio_file_path)
+    print(f"Transcription: {text}", flush=True)
+
+    response = voiceChat.getModelResponse(text)
+    print(f"Response: {response}")
+
+    audio_filename = f"{int(time.time())}"
+    await voiceChat.textToSpeech(response, audio_filename)
+    print(f"Audio saved: {audio_filename}")
+
+    return {
+        "prompt": text,
+        "response": response,
+        "audio_url": f"http://127.0.0.1:8000/static/{audio_filename}.wav"
+    }
