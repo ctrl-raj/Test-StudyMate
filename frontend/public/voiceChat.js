@@ -28,56 +28,48 @@ let chunks = [];
 })();
 
 // global declaration
-var promptDisplay = document.createElement('p');
-var newPlayback = document.createElement('audio');
-var progressBar = document.createElement('progress');
+const promptTitle = document.querySelector(".prompt-title");
+const newPlayback = document.querySelector("#new-playback")
+const progressBar = document.querySelector(".progress-bar");
+// display response
+const promptDisplay = document.querySelector(".prompt-display")
+const responseDisplay = document.querySelector(".response-display")
 
 // handles during fetching process
 function handleProcess(playbackSource){
-    // replace Mic Toggle Button
-    micBtn.style.display = "none"
-    promptDisplay.textContent = "Your Prompt:";
-    promptDisplay.style.fontSize = "20px"
-    promptDisplay.style.marginBottom = "20px"
-    focusDiv.appendChild(promptDisplay)
+    // removes elements while processing
+    micBtn.style.display = "none";
+    promptDisplay.style.display = "none";
+    responseDisplay.style.display = "none";
 
-    // add prompt audio
-    playback.style.display = "none";
-    newPlayback.className = "playback";
-    newPlayback.controls = true;
-    newPlayback.src = playbackSource
-    focusDiv.appendChild(newPlayback)
-
-    // add progress bar
-    progressBar.className = "progress-bar";
-    progressBar.style.marginTop = "150px"
-    progressBar.style.width = "300px"
-    focusDiv.appendChild(progressBar);
+    promptTitle.style.display = "block";
+    promptTitle.textContent = "Your Prompt: ";
+    newPlayback.style.display = "block"
+    newPlayback.src = playbackSource;
+    newPlayback.autoplay = false;
+    progressBar.style.display = "block";
 }
 
-// display response
-function displayResponse(prompt, response){
-    // mic button reappears 
-    micBtn.style.display = "visible";
-    // remove progress bar
+function displayResponse(prompt, response, audioUrl){
+    promptTitle.style.display = "block";
+    newPlayback.style.display = "block"
     progressBar.style.display = "none";
 
-    const promptDisplay = document.createElement('h4');
+    promptTitle.textContent = "Model Response: ";
+    newPlayback.src = audioUrl;
+    newPlayback.autoplay = true;
+
+    // mic button reappears 
+    micBtn.style.display = "block";
+
+    promptDisplay.style.display = "block";
     promptDisplay.innerText = prompt;
-    promptDisplay.style.fontWeight = "200";
-    focusDiv.appendChild(promptDisplay);
 
-    const responseDisplay = document.createElement('h3');
+    responseDisplay.style.display = "block";
     responseDisplay.innerText = response;
-    responseDisplay.style.fontWeight = "300";
-    focusDiv.appendChild(responseDisplay);
 
-    const responseAudio = document.createElement('audio');
-    responseAudio.controls = true;
     responseAudio.src = audioUrl;
     responseAudio.autoplay = true;
-    responseAudio.className = "response-audio";
-    focusDiv.appendChild(responseAudio);
 }
 
 function SetupStream(stream){
@@ -87,12 +79,34 @@ function SetupStream(stream){
         chunks.push(e.data)
     }
 
-    recorder.onstop = e => {
-        const blob = new Blob(chunks, {type: "audio/webm; codecs=opus"});
-        chunks = [];
-        const audioURL = window.URL.createObjectURL(blob);
-        playback.src = audioURL;
-        getSpeechResponse(blob, audioURL);
+    // Make onstop handler robust: guard against missing DOM nodes and surface errors
+    recorder.onstop = async e => {
+        try {
+            const blob = new Blob(chunks, {type: "audio/webm; codecs=opus"});
+            chunks = [];
+            const audioURL = window.URL.createObjectURL(blob);
+
+            // prefer the new playback element if present, otherwise fall back to the original playback
+            try {
+                if (newPlayback && typeof newPlayback !== 'undefined') {
+                    newPlayback.src = audioURL;
+                } else {
+                    playback.src = audioURL;
+                }
+            } catch (domErr) {
+                console.warn('Playback element missing or not writable, falling back to original playback:', domErr);
+                playback.src = audioURL;
+            }
+
+            // call the processing function and catch its errors separately
+            try {
+                await getSpeechResponse(blob, audioURL);
+            } catch (procErr) {
+                console.error('Error in getSpeechResponse:', procErr);
+            }
+        } catch (err) {
+            console.error('Error in recorder.onstop:', err);
+        }
     }
 
     canRecord = true;

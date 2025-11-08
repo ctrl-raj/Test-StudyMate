@@ -39,8 +39,18 @@
                 <button type="button" class="mic-toggle" id="mic">
                     <span id="mic-span" class="material-symbols-outlined">mic</span>
                 </button>
-
-                <audio class="playback" controls></audio>
+                
+                <!--For the Loading part-->
+                <p class="prompt-title"
+                style="font-size: 20px; margin-bottom: 20px; display: none;">Your Prompt: </p>
+                <audio src="" id="new-playback" controls
+                style="display: none;"></audio>
+                <progress class="progress-bar"
+                style="margin-top: 100px; width: 300px; display: none;"></progress>
+                
+                <!--For the Display-->
+                <h4 class="prompt-display" style="display: none;">Hello Rookie</h4>
+                <h3 class="response-display" style="display: none;">Hi how Can i help you</h3>
             </div>
         </main>
     </div>

@@ -95,11 +95,6 @@ body {
     flex-direction: column;
     align-items: center;
 }
-
-.focus-box h4 {
-    color: #a654f7;
-    font-size: 3rem;
-}
 button {
     appearance: none;
     border: none;
@@ -116,7 +111,6 @@ main {
 }
 .mic-toggle {
     position: relative;
-    display: block;
     width: 8rem;
     height: 8rem;
     border-radius: 50%;
@@ -174,4 +168,17 @@ main {
 }
 .mic-toggle.is-recording::before {
     animation: smoothPadAfter 0.6s ease-in alternate-reverse forwards;
+}
+.prompt-display {
+    font-size: 24px;
+    color: hsl(0, 0%, 80%);
+    font-weight: 400;
+    margin-top: 40px;
+    margin-bottom: 20px;
+}
+.response-display {
+    font-size: 20px;
+    font-weight: 300;
+    color: #fff;
+    padding-right: 10px;
 }

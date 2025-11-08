@@ -2,6 +2,9 @@
 
 # Global Dependencies
 from fastapi import FastAPI, File, UploadFile, staticfiles
+from fastapi.responses import FileResponse
+import tempfile
+import os
 from pydantic import BaseModel
 from fastapi.middleware.cors import CORSMiddleware
 import subprocess, os, time, signal
@@ -67,28 +70,28 @@ async def summariser(file: UploadFile = File(...)):
 # - Voice Chat
 @app.post("/generateAudioResponse/")
 async def generateAudioResponse(file: UploadFile = File(...)):
-    # - dependencies
     import voiceChat
-    import time
-
-    print("==ENDPOINT-CALL==",flush=True)
-
     webm_content = await file.read()
-    print(f"Received {len(webm_content)} bytes")
     audio_file_path = await voiceChat.blobToWAV(webm_content)
 
     text = await voiceChat.speechToText(audio_file_path)
-    print(f"Transcription: {text}", flush=True)
 
     response = voiceChat.getModelResponse(text)
-    print(f"Response: {response}")
+    responseTxt = response["message"]  # getModelResponse already returns a dict
 
     audio_filename = f"{int(time.time())}"
-    await voiceChat.textToSpeech(response, audio_filename)
-    print(f"Audio saved: {audio_filename}")
+    saved_basename = await voiceChat.textToSpeech(responseTxt, audio_filename)
 
-    return {
-        "prompt": text,
-        "response": response,
-        "audio_url": f"http://127.0.0.1:8000/static/{audio_filename}.wav"
-    }
+    return {"prompt": text, 
+            "response": responseTxt, 
+            "audio_url": f"http://127.0.0.1:8000/audio/{saved_basename}"}
+
+
+@app.get("/audio/{filename}")
+async def get_audio(filename: str):
+    temp_dir = tempfile.gettempdir()
+    safe_name = os.path.basename(filename)
+    filepath = os.path.join(temp_dir, safe_name)
+    if os.path.exists(filepath):
+        return FileResponse(filepath, media_type="audio/wav")
+    return {"error": "File not found"}
