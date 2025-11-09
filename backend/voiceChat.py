@@ -86,13 +86,9 @@ def getModelResponse(prompt: str):
     model = "rookie"
 
     response = client.generate(model=model, prompt=prompt, keep_alive="1m")
-
-    # Create JSON with message and empty toolcalls
-    result = {
-        "message": response.response,
-        "toolcalls": []
-    }
-    return json.dumps(result)
+    
+    # Parse the model's JSON string response into a dict
+    return json.loads(response.response)
 
 # convert text to speech
 async def textToSpeech(text: str, fileName):

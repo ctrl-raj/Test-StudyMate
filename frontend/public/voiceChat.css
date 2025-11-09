@@ -170,15 +170,17 @@ main {
     animation: smoothPadAfter 0.6s ease-in alternate-reverse forwards;
 }
 .prompt-display {
-    font-size: 24px;
+    font-size: 22px;
     color: hsl(0, 0%, 80%);
     font-weight: 400;
     margin-top: 40px;
-    margin-bottom: 20px;
+    margin-bottom: 5px;
 }
 .response-display {
     font-size: 20px;
     font-weight: 300;
     color: #fff;
-    padding-right: 10px;
+    padding: 10px;
+    border-radius: 10px;
+    background-color: rgba(147, 51, 234, 0.2);
 }

@@ -13,7 +13,6 @@ class Product(BaseModel):
     prompt: str
 
 app = FastAPI(title="StudyMate Chat Server")
-app.mount("/static", staticfiles.StaticFiles(directory="static"), name="static")
 ollamaProcess = None
 
 # - CORS configuration
@@ -29,7 +28,10 @@ app.add_middleware(
 @app.on_event("startup")
 async def startOllama():
     global ollamaProcess
-    ollamaProcess = subprocess.Popen(["ollama", "serve"])
+    ollamaProcess = subprocess.Popen(["ollama", "serve"],
+        stdout=open(os.devnull, "w"),
+        stderr=open(os.devnull, "w")
+    )
     print("-Ollama Started-")
 
 @app.on_event("shutdown")
@@ -77,6 +79,7 @@ async def generateAudioResponse(file: UploadFile = File(...)):
     text = await voiceChat.speechToText(audio_file_path)
 
     response = voiceChat.getModelResponse(text)
+    print(response)
     responseTxt = response["message"]  # getModelResponse already returns a dict
 
     audio_filename = f"{int(time.time())}"
