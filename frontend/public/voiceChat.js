@@ -6,9 +6,9 @@ const focusDiv = document.querySelector(".focus-box")
 
 micBtn.addEventListener('click', (e) => {
     e.preventDefault();
-    e.stopPropagation(); // ✅ Add this
+    e.stopPropagation();
     ToggleMic();
-    return false; // ✅ Add this
+    return false;
 });
 
 let canRecord = false;
