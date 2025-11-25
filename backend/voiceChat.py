@@ -83,7 +83,7 @@ def getModelResponse(prompt: str):
     import json
 
     client = ollama.Client()
-    model = "rookie"
+    model = "yuki"
 
     response = client.generate(model=model, prompt=prompt, keep_alive="1m")
     
