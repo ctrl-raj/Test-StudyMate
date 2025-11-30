@@ -18,7 +18,7 @@ ollamaProcess = None
 # - CORS configuration
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://127.0.0.1:5500",
+    allow_origins=["http://127.0.0.1:5501",
         "http://localhost:5500"],
     allow_credentials=True,
     allow_methods=["*"],
@@ -50,6 +50,7 @@ async def chatResponse(prompt: str):
         data = list(chatScheduler(prompt))
         response = data[0]
         other = data[1]
+        print(other, flush=True)
         return {
             "response": response,
             "other": other

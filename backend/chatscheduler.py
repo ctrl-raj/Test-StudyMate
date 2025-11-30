@@ -54,12 +54,13 @@ def chatScheduler(prompt: str):
 
     # Initialize the Ollama client
     client = ollama.Client()
-    model = "rookie"
+    model = "yuki"
 
     # generate response
     response = client.generate(model=model, prompt=prompt)
     print(f"--{model} Responded--")
     response_string = response.response
+    print(response_string)
 
     # response
     response_dict = json.loads(response_string)

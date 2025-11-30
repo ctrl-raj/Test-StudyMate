@@ -46,7 +46,8 @@ async function handleChat(){
     chatbox.appendChild(listItem)
 
     responseArr = await generateResponse(userMessage);
-    eventObject = responseArr[1];
+    console.log(responseArr)
+    eventObject = await responseArr[1];
     console.log(eventObject)
 
     listItem.remove() // removes 'Thinking message'

@@ -5,6 +5,42 @@ Study Buddy is a smart digital companion designed to help students organize, tra
 The project is currently under development — backend is being built, while frontend integration is planned.  
 
 ---
+# Watch live demos and screenshots
+## *1. Chat-to-Calendar Scheduler*
+You can chat Yuki, while it manages your study schedules.
+<div>
+<img src="assets/chatbotScreen.png" width="500">
+<video src="assets/chatDemo.mp4" width="580" controls>
+</div>
+
+## *2. Voice Command Input*
+Just dictate Yuki.
+<div>
+<img src="assets/voicechat screen.png" width="500">
+<video src="assets/voiceChat.mp4" width="580" controls>
+</div>
+
+## *3. Smart Notes Summeriser*
+Summerise your notes or any study material in seconds.
+<div>
+<img src="assets/contentSUM.png" width="500">
+<video src="assets/sumDemo.mp4" width="580" controls>
+</div>
+
+## *4. Focus Session*
+25 minutes of focus and 5 minutes of break is all you need to be productive.
+<div>
+<img src="assets/studySession.png" width="500">
+</div>
+
+## *5. Dashboard*
+All your weekly progress to satisfy your productivity.
+<div>
+<img src="assets/dashboard.png" width="500">
+</div>
+
+
+---
 
 ## Planned Features
 
@@ -20,7 +56,7 @@ The project is currently under development — backend is being built, while fro
 - Example: “Remind me to finish my Physics homework by Friday.”  
 - Stores tasks with deadlines, checklist view in frontend.  
 
-### 4. **Smart Notes Summarizer** 📝
+### 4. **Smart Notes Summarizer** ✅
 - Upload notes (text/PDFs).  
 - Backend (Hugging Face model) creates concise summaries.  
 
@@ -28,17 +64,17 @@ The project is currently under development — backend is being built, while fro
 - Track study hours per subject.  
 - Weekly reports: *“You studied Physics 40%, Math 30%...”*  
 
-### 6. **Exam Countdown with Study Plan** ⏳
+### 6. **Exam Countdown with Study Plan** 📝
 - AI splits subjects across days until exam.  
 - Shows countdown timer and daily study goals.  
 
-### 7. **Distraction Blocker Suggestions** 🚫
+### 7. **Distraction Blocker Suggestions** 📝
 - Chatbot suggests Pomodoro breaks or motivational nudges.  
 
-### 8. **Group Study Mode (Future)** 👥
+### 8. **Group Study Mode (Future)** 📝
 - Share flashcards or schedules with friends (export/import JSON).  
 
-### 9. **Voice Command Input (Optional)** 🎤
+### 9. **Voice Command Input (Optional)** ✅
 - Speak instead of type: *“Add Physics at 4pm tomorrow.”*  
 - Uses Web Speech API (JS) for speech-to-text.  
 
@@ -49,7 +85,7 @@ The project is currently under development — backend is being built, while fro
 Install [Ollama](https://ollama.com/)
 ```Bash
 ollama pull mistral
-ollama create rookie -f backend/models/Rookie.Modelfile
+ollama create yuki -f backend/models/Rookie.Modelfile
 ```
 ```Bash
 pip install -f requirements.txt
@@ -71,4 +107,5 @@ uvicorn API_server:app
 ---
 
 ## Vision
-Study Buddy aims to reduce student stress by combining scheduling, accountability, and collaboration into one AI-powered platform.  
+- Study Buddy aims to reduce student stress by combining scheduling, accountability, and collaboration into one AI-powered platform.  
+- AI can handles your scrambled input, traditional UI can give you desired output.
