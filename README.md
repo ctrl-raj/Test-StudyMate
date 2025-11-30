@@ -8,26 +8,23 @@ The project is currently under development — backend is being built, while fro
 # Watch live demos and screenshots
 ## *1. Chat-to-Calendar Scheduler*
 You can chat Yuki, while it manages your study schedules. (click on the image to watch video demo)
+[[Watch Demo]](https://youtu.be/YOUR_VIDEO_ID)
 <div>
-<a href="https://youtu.be/OiBZTlw5Zt0" target="_blank">
 <img src="assets/chatbotScreen.png" width="500">
-</a>
 </div>
 
 ## *2. Voice Command Input*
 Just dictate Yuki. (click on the image to watch video demo)
+[[Watch Demo]](https://youtu.be/YOUR_VIDEO_ID)
 <div>
-<a href="https://youtu.be/hmSsQ15Vub0" target="_blank">
 <img src="assets/voicechat_screen.png" width="500">
-</a>
 </div>
 
 ## *3. Smart Notes Summeriser*
 Summerise your notes or any study material in seconds. (click on the image to watch video demo)
+[[Watch Demo]](https://youtu.be/YOUR_VIDEO_ID)
 <div>
-<a href="https://youtu.be/NgC9Dm3rY08" target="_blank">
 <img src="assets/contentSUM.png" width="500">
-</a>
 </div>
 
 ## *4. Focus Session*
