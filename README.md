@@ -10,21 +10,21 @@ The project is currently under development — backend is being built, while fro
 You can chat Yuki, while it manages your study schedules.
 <div>
 <img src="assets/chatbotScreen.png" width="500">
-<video src="assets/chatDemo.mp4" width="580" controls>
+<video src="assets/chatDemo.mp4" width="580" controls></video>
 </div>
 
 ## *2. Voice Command Input*
 Just dictate Yuki.
 <div>
 <img src="assets/voicechat screen.png" width="500">
-<video src="assets/voiceChat.mp4" width="580" controls>
+<video src="assets/voiceChat.mp4" width="580" controls></video>
 </div>
 
 ## *3. Smart Notes Summeriser*
 Summerise your notes or any study material in seconds.
 <div>
 <img src="assets/contentSUM.png" width="500">
-<video src="assets/sumDemo.mp4" width="580" controls>
+<video src="assets/sumDemo.mp4" width="580" controls></video>
 </div>
 
 ## *4. Focus Session*
