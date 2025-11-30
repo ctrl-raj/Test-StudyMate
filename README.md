@@ -16,7 +16,7 @@ You can chat Yuki, while it manages your study schedules.
 ## *2. Voice Command Input*
 Just dictate Yuki.
 <div>
-<img src="assets/voicechat screen.png" width="500">
+<img src="assets/voicechat_screen.png" width="500">
 <video src="assets/voiceChat.mp4" width="580" controls></video>
 </div>
 
