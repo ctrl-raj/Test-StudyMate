@@ -1,8 +1,10 @@
-# Study Buddy 🧠
+# Study Mate
 
-**Status:** 🚧 In Development  
-Study Buddy is a smart digital companion designed to help students organize, track, and improve their study routines.  
+**Status:** 🚧 Paused - This project was developed solely for educational purposes and will not be released publicly in the near future.<br>
+Study Mate is a smart digital companion designed to help students organize, track, and improve their study routines.  
 The project is currently under development — backend is being built, while frontend integration is planned.  
+
+**Project Pause** - Study Mate was developed by students of PM Shri KV MSMD (C.G.) for the Hackathon event AI Vidyasethu.ai. However, we were unable to qualify for the regional round. Consequently, we have decided to cease development of this project to focus on our core subjects. We may consider restarting the project in the future.
 
 ---
 # Watch live demos and screenshots
